@@ -1,0 +1,61 @@
+
+// C++ code
+// Semáforo 1
+
+int verdeCarro = 3;
+int amareloCarro = 4;
+int vermelhoCarro = 5;
+
+int verdePedestre = 9;
+int vermelhoPedestre = 10;
+
+void setup() {
+  pinMode(verdeCarro, OUTPUT);
+  pinMode(amareloCarro, OUTPUT);
+  pinMode(vermelhoCarro, OUTPUT);
+
+  pinMode(verdePedestre, OUTPUT);
+  pinMode(vermelhoPedestre, OUTPUT);
+}
+
+void loop() {
+
+  // CARRO VERDE (5s) / PEDESTRE VERMELHO
+  digitalWrite(verdeCarro, HIGH);
+  digitalWrite(amareloCarro, LOW);
+  digitalWrite(vermelhoCarro, LOW);
+
+  digitalWrite(verdePedestre, LOW);
+  digitalWrite(vermelhoPedestre, HIGH);
+
+  delay(5000);
+
+  // CARRO AMARELO (2s) / PEDESTRE VERMELHO
+  digitalWrite(verdeCarro, LOW);
+  digitalWrite(amareloCarro, HIGH);
+  digitalWrite(vermelhoCarro, LOW);
+
+  delay(2000);
+
+  // CARRO VERMELHO / PEDESTRE VERDE (4s)
+  digitalWrite(amareloCarro, LOW);
+  digitalWrite(vermelhoCarro, HIGH);
+
+  digitalWrite(verdePedestre, HIGH);
+  digitalWrite(vermelhoPedestre, LOW);
+
+  delay(4000);
+
+  // PEDESTRE VERMELHO PISCANDO (2s)
+  digitalWrite(verdePedestre, LOW);
+
+  digitalWrite(vermelhoPedestre, HIGH);
+  delay(500);
+  digitalWrite(vermelhoPedestre, LOW);
+  delay(500);
+
+  digitalWrite(vermelhoPedestre, HIGH);
+  delay(500);
+  digitalWrite(vermelhoPedestre, LOW);
+  delay(500);
+}
