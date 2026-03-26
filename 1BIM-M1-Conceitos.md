@@ -27,3 +27,35 @@ O uso de hardware open source em projetos de IoT tem várias vantagens, principa
 
 ## Exercício 5 — Pergunta conceitual
 O microcontrolador é o principal componente de um sistema embarcado, sendo responsável por controlar todo o funcionamento do sistema. Ele recebe dados de sensores, como temperatura, luz ou presença, e processa essas informações. A partir disso, ele toma decisões de acordo com a programação feita pelo desenvolvedor. Depois, envia comandos para atuadores, como LEDs, motores ou relés. Ele funciona como o “cérebro” do sistema, coordenando todas as ações. Sem o microcontrolador, o sistema não teria autonomia. Além disso, ele permite que tarefas sejam automatizadas de forma rápida e eficiente. Por isso, é essencial em praticamente todos os sistemas embarcados.
+
+---
+
+## Exercício 6 — Pergunta de aplicação
+
+Um projeto simples seria um sistema de irrigação automática para plantas. Nesse sistema, um sensor de umidade do solo mede se a terra está seca ou úmida. Quando o sensor detecta que o solo está seco, ele envia um sinal para o controlador (como um Arduino). O controlador então ativa um atuador, como uma bomba de água, que começa a irrigar a planta. Quando o solo atinge um nível adequado de umidade, a bomba é desligada automaticamente. Esse sistema ajuda a economizar água e mantém as plantas saudáveis sem necessidade de intervenção constante.
+
+---
+
+## Exercício 7 — Pergunta de investigação
+
+No circuito, foi adicionado um botão junto ao LED. O botão funciona como um interruptor: quando ele é pressionado, permite a passagem de corrente elétrica. O Arduino é programado para ler o estado do botão. Quando o botão está pressionado, o Arduino envia um sinal para acender o LED. Quando o botão não está pressionado, o LED permanece apagado. Assim, o LED só acende enquanto o botão estiver sendo pressionado.
+
+---
+
+## Exercício 8 — Pergunta de reflexão
+
+O movimento maker contribui para o aprendizado em tecnologia porque incentiva o aprendizado prático, ou seja, aprender fazendo. Em vez de apenas estudar teoria, o aluno constrói projetos, testa ideias e aprende com erros e acertos. Isso desenvolve habilidades como criatividade, resolução de problemas e pensamento crítico, além de tornar o aprendizado mais interessante e dinâmico.
+
+---
+
+## Exercício 9 — Pergunta de aplicação
+
+
+Em um sistema de supervisão automatizado, sensores e atuadores trabalham juntos para monitorar e controlar processos. Os sensores coletam informações do ambiente, como temperatura, luz ou presença. Essas informações são enviadas para um controlador, que analisa os dados e toma decisões. Com base nisso, os atuadores são acionados para realizar alguma ação, como ligar um ventilador, acender uma luz ou ativar um alarme. Dessa forma, o sistema consegue funcionar automaticamente, sem necessidade de intervenção humana constante.
+
+---
+
+## Exercício 10 — Pergunta de investigação
+
+
+Ao explorar um projeto no simulador Wokwi, foi possível modificar o tempo de acionamento de um LED que piscava. Inicialmente, o LED piscava rapidamente, com um intervalo pequeno de tempo. Após aumentar o valor do delay no código, o LED passou a piscar mais lentamente. Essa mudança mostrou como o tempo programado influencia diretamente o comportamento do circuito, permitindo controlar a velocidade das ações realizadas pelo sistema.
