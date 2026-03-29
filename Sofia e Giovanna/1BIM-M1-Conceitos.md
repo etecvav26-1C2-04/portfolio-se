@@ -37,31 +37,102 @@
 ---
 ## Exercício 6 — Pergunta de aplicação
 **Proponha um projeto simples utilizando sensores e atuadores para resolver um problema real.**
-R
+**Projeto: Sistema de Alerta de Nível de Água**
+
+Sistema de Alerta de Nível de Água
+
+Problema:
+Caixas d’água podem transbordar por falta de controle, causando desperdício e possíveis danos.
+
+---
+
+Materiais:
+
+* Arduino Uno
+* Sensor ultrassônico (HC-SR04)
+* LED vermelho
+* Buzzer
+* Resistor (220 ohms)
+* Jumpers e protoboard
+
+Funcionamento:
+O sensor mede a distância até a água.
+
+* Se a distância for pequena (nível alto): LED acende e buzzer dispara.
+* Se a distância for grande (nível baixo): tudo permanece desligado.
+
+Montagem:
+
+* Sensor: VCC → 5V | GND → GND | TRIG → pino 9 | ECHO → pino 10
+* LED: pino 7 (com resistor) → GND
+* Buzzer: pino 6 → GND
 
 ---
 ## Exercício 7 — Pergunta de investigação
 **No simulador, adicione um botão ao circuito do LED. Programe para que o LED acenda apenas quando o botão for pressionado. Descreva o funcionamento.**
 
-R
+Materiais:
+1 Arduino Uno
+1 LED
+1 Botão
+1 Resistor (220 ohms)
+1 Resistor para o botão (10k ohms)
+Jumpers e Protoboard
+Montagem:
+LED:
+O ânodo do LED vai para o pino digital 7 do Arduino (com resistor de 220 ohms).
+O cátodo do LED vai para o GND.
+Botão:
+Um terminal do botão vai para o pino digital 2 do Arduino.
+O outro terminal do botão vai para o GND (através de um resistor de 10k ohms).
+Um resistor de 10k ohms é usado para evitar flutuação no pino (pull-down resistor).
+Funcionamento do sistema:
+Quando o botão é pressionado, o pino digital 2 recebe um sinal HIGH (3.3V), acionando o LED no pino 7.
+Quando o botão não é pressionado, o pino 2 recebe um sinal LOW (0V), fazendo o LED permanecer apagado.
+
+Código:
+
+#define led 7
+#define botao 2
+
+void setup() {
+  pinMode(led, OUTPUT);    // Define o pino do LED como saída
+  pinMode(botao, INPUT);   // Define o pino do botão como entrada
+}
+
+void loop() {
+  int estadoBotao = digitalRead(botao); // Lê o estado do botão
+
+  if (estadoBotao == HIGH) { // Se o botão for pressionado
+    digitalWrite(led, HIGH); // Acende o LED
+  } else {
+    digitalWrite(led, LOW);  // Caso contrário, apaga o LED
+  }
+}
 
 ---
 ## Exercício 8 — Pergunta de reflexão
 **Como o movimento maker contribui para o aprendizado em tecnologia?**
 
-R
+O movimento maker contribui para o aprendizado em tecnologia ao incentivar o aprendizado prático, desenvolver habilidades de resolução de problemas, integrar várias áreas (como programação e eletrônica), estimular a criatividade e promover a colaboração. Ele transforma o aluno em criador ativo, o que fortalece o entendimento e a inovação.
 
 ---
 ## Exercício 9 — Pergunta de aplicação
 **Explícita como sensores e atuadores trabalham juntos em um sistema de supervisão automatizado.**
 
-R
+Sensores e atuadores trabalham juntos em um sistema automatizado formando um ciclo:
+
+Sensores coletam dados do ambiente (medem).
+O sistema de controle analisa essas informações (decide).
+Atuadores executam ações com base nas decisões (agem).
+
+Tudo ocorre continuamente em um ciclo de feedback, garantindo que o sistema funcione de forma automática e ajustada às condições desejadas.
 
 ---
 ## Exercício 10 — Pergunta de investigação
 **Explore um projeto pronto no Wokwi ou Tinkercad. Modifique algum parâmetro (tempo, sensor, etc.) e descreva o que mudou.**
 
-R
+O projeto escolhido foi um de Semáforo com Arduino (LEDs vermelho, amarelo e verde), e o que foi mudado é o tempo que o semáforo amarelo ficou aceso.
 
 
 
