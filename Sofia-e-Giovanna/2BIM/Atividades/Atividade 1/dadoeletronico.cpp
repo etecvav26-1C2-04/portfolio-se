@@ -1,6 +1,6 @@
 // C++ code
 //
-int Led1 = 9;
+int Led1 = 7;
 int Led2 = 6;
 int Led3 = 5;
 int Led4 = 8;
