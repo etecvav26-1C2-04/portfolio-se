@@ -1,68 +1,86 @@
- setup()
-{
-randomSeed(analogRead(0));
-pinMode(2, INPUT_PULLUP);
-pinMode(4, OUTPUT);
-pinMode(5, OUTPUT);
-pinMode(6, OUTPUT);
-pinMode(7, OUTPUT);
-pinMode(8, OUTPUT);
-pinMode(9, OUTPUT);
-pinMode(10, OUTPUT);
+// C++ code
+//
+int Led1 = 7;
+int Led2 = 6;
+int Led3 = 5;
+int Led4 = 8;
+int Led5 = 9;
+int Led6 = 10;
+int Led7 = 11;
+int Botao = 2;
+
+void setup(){
+  pinMode(Led1,OUTPUT);
+  pinMode(Led2,OUTPUT);
+  pinMode(Led3,OUTPUT);
+  pinMode(Led4,OUTPUT);
+  pinMode(Led5,OUTPUT);
+  pinMode(Led6,OUTPUT);
+  pinMode(Led7,OUTPUT);
+  pinMode(Botao,INPUT_PULLUP);
+  
+  randomSeed(analogRead(0));
 }
-void apagaTudo()
-{
-digitalWrite(4, LOW);
-digitalWrite(5, LOW);
-digitalWrite(6, LOW);
-digitalWrite(7, LOW);
-digitalWrite(8, LOW);
-digitalWrite(9, LOW);
-digitalWrite(10, LOW);
+
+void loop(){
+  if(digitalRead(Botao) == HIGH) {
+    sorteia();
+    }
 }
-void sorteia()
-{
-int valor = random(1, 7);
-apagaTudo();
-if (valor == 1) {
-digitalWrite(8, HIGH);
-}
-if (valor == 2) {
-digitalWrite(7, HIGH);
-digitalWrite(11, HIGH);
-}
-if (valor == 3) {
-digitalWrite(7, HIGH);
-digitalWrite(11, HIGH);
-digitalWrite(8, HIGH);
-}
-if (valor == 4) {
-digitalWrite(5, HIGH);
-digitalWrite(11, HIGH);
-digitalWrite(7, HIGH);
-digitalWrite(9, HIGH);
-}
-if (valor == 5) {
-digitalWrite(11, HIGH);
-digitalWrite(5, HIGH);
-digitalWrite(8, HIGH);
-digitalWrite(7, HIGH);
-digitalWrite(9, HIGH);
-}
-if (valor == 6) {
-digitalWrite(5, HIGH);
-digitalWrite(6, HIGH);
-digitalWrite(7, HIGH);
-digitalWrite(10, HIGH);
-digitalWrite(9, HIGH);
-digitalWrite(11, HIGH);
-}
-delay(4000);
-apagaTudo();
-void loop()
-}
-{
-if (digitalRead(2) == HIGH) {
-sorteia();
-}
-}
+void sorteia(){
+  int numSorteado = random (1,7);
+  
+  if(numSorteado==1)
+  {
+    digitalWrite(Led4,HIGH);
+  }
+  
+  if(numSorteado==2)
+  {
+    digitalWrite(Led1,HIGH);
+    digitalWrite(Led7,HIGH);
+  }
+  
+  if(numSorteado==3)
+  {
+    digitalWrite(Led1,HIGH);
+    digitalWrite(Led4,HIGH);
+    digitalWrite(Led7,HIGH);
+  }
+  
+  if(numSorteado==4)
+  {
+    digitalWrite(Led1,HIGH);
+    digitalWrite(Led3,HIGH);
+    digitalWrite(Led5,HIGH);
+    digitalWrite(Led7,HIGH);
+  }
+  
+  if(numSorteado==5)
+  {
+    digitalWrite(Led1,HIGH);
+    digitalWrite(Led3,HIGH);
+    digitalWrite(Led5,HIGH);
+    digitalWrite(Led7,HIGH);
+    digitalWrite(Led4,HIGH);
+  }
+  
+  if(numSorteado==6)
+  {
+    digitalWrite(Led1,HIGH);
+    digitalWrite(Led2,HIGH);
+    digitalWrite(Led3,HIGH);
+    digitalWrite(Led5,HIGH);
+    digitalWrite(Led6,HIGH);
+    digitalWrite(Led7,HIGH);
+  }
+  
+  delay(1250);
+    digitalWrite(Led1,LOW);
+    digitalWrite(Led2,LOW);
+    digitalWrite(Led3,LOW);
+    digitalWrite(Led4,LOW);
+    digitalWrite(Led5,LOW);
+    digitalWrite(Led6,LOW);
+    digitalWrite(Led7,LOW);
+  }
