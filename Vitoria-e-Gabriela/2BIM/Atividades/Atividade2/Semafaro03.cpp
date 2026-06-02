@@ -97,11 +97,8 @@ void setup() {
   pinMode(verdePedestre,    OUTPUT);
   pinMode(vermelhoPedestre, OUTPUT);
 
-  // INPUT_PULLUP → resistor interno ativado
-  // botão ligado ao GND: solto = HIGH, pressionado = LOW
   pinMode(botao, INPUT_PULLUP);
 
-  // Estado inicial
   digitalWrite(vermelhoPedestre, HIGH);
   digitalWrite(verdePedestre,    LOW);
 }
@@ -114,7 +111,6 @@ void loop() {
   carros1Amarelo();
   delayComBotao(2000);
 
-  // Ambos vermelho — verifica pedestre
   todosVermelho();
   if (pedidoPedestre) {
     pedidoPedestre = false;
