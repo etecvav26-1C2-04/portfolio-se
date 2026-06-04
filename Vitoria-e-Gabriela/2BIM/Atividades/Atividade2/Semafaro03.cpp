@@ -7,20 +7,13 @@ int amareloCarro2  = 7;
 int vermelhoCarro2 = 8;
 int verdePedestre    = 9;
 int vermelhoPedestre = 10;
-int botao = A0;
+int botao = 12;
 
 bool pedidoPedestre = false;
 
-void delayComBotao(unsigned long ms) {
-  unsigned long inicio = millis();
-  while (millis() - inicio < ms) {
-    // Botão ligado ao GND → pressionado = LOW (INPUT_PULLUP)
-    if (digitalRead(botao) == LOW) {
-      pedidoPedestre = true;
-    }
-  }
-}
-
+// ─────────────────────────────────────────
+// Estados dos semáforos de carros
+// ─────────────────────────────────────────
 void carros1Verde() {
   digitalWrite(verdeCarro1,    HIGH);
   digitalWrite(amareloCarro1,  LOW);
@@ -66,6 +59,9 @@ void todosVermelho() {
   digitalWrite(vermelhoCarro2, HIGH);
 }
 
+// ─────────────────────────────────────────
+// Sequência do pedestre
+// ─────────────────────────────────────────
 void atravessarPedestre() {
   todosVermelho();
 
@@ -87,6 +83,7 @@ void atravessarPedestre() {
   digitalWrite(vermelhoPedestre, HIGH);
 }
 
+// ─────────────────────────────────────────
 void setup() {
   pinMode(verdeCarro1,    OUTPUT);
   pinMode(amareloCarro1,  OUTPUT);
@@ -97,33 +94,54 @@ void setup() {
   pinMode(verdePedestre,    OUTPUT);
   pinMode(vermelhoPedestre, OUTPUT);
 
-  pinMode(botao, INPUT_PULLUP);
+  // INPUT_PULLUP → resistor interno ativado
+  // botão ligado ao GND: solto = HIGH, pressionado = LOW
+  pinMode(botao, INPUT);
 
+  // Estado inicial
   digitalWrite(vermelhoPedestre, HIGH);
-  digitalWrite(verdePedestre,    LOW);
+  digitalWrite(verdePedestre,   LOW);
 }
 
+// ─────────────────────────────────────────
 void loop() {
 
+  // ── FASE 1: Carro 1 verde ───────────────
   carros1Verde();
-  delayComBotao(5000);
+  delay(5000);
+   if (digitalRead(botao) == HIGH) {
+      pedidoPedestre = true;
+    }
 
   carros1Amarelo();
-  delayComBotao(2000);
+  delay(2000);
+   if (digitalRead(botao) == HIGH) {
+      pedidoPedestre = true;
+    }
 
-  todosVermelho();
+  // Ambos vermelho — verifica pedestre
+//  todosVermelho();
   if (pedidoPedestre) {
     pedidoPedestre = false;
     atravessarPedestre();
-  }
+}
+ 
 
+  // ── FASE 2: Carro 2 verde ───────────────
   carros2Verde();
-  delayComBotao(5000);
+  delay(5000);
+   if (digitalRead(botao) == HIGH) {
+      pedidoPedestre = true;
+    }
 
   carros2Amarelo();
-  delayComBotao(2000);
+  delay(2000);
+   if (digitalRead(botao) == HIGH) {
+      pedidoPedestre = true;
+    }
 
-  todosVermelho();
+  // Ambos vermelho — verifica pedestre
+//  todosVermelho();
   if (pedidoPedestre) {
     pedidoPedestre = false;
     atravessarPedestre();
