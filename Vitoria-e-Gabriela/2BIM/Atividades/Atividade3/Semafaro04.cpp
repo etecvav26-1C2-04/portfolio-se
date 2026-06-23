@@ -1,4 +1,3 @@
-// === Pinos ===
 int verdeCarro1    = 3;
 int amareloCarro1  = 4;
 int vermelhoCarro1 = 5;
@@ -24,9 +23,6 @@ void delayComBotao(unsigned long ms) {
   }
 }
 
-// ─────────────────────────────────────────
-// Estados dos semáforos de carros
-// ─────────────────────────────────────────
 void carros1Verde() {
   digitalWrite(verdeCarro1,    HIGH);
   digitalWrite(amareloCarro1,  LOW);
@@ -96,7 +92,6 @@ void atravessarPedestre() {
   digitalWrite(vermelhoPedestre, HIGH);
 }
 
-// ─────────────────────────────────────────
 void setup() {
   pinMode(verdeCarro1,    OUTPUT);
   pinMode(amareloCarro1,  OUTPUT);
@@ -116,7 +111,6 @@ void setup() {
   digitalWrite(verdePedestre,   LOW);
 }
 
-// ─────────────────────────────────────────
 void loop() {
 
   // ── FASE 1: Carro 1 verde ───────────────
