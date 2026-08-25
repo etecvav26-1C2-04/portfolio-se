@@ -1,0 +1,36 @@
+#include <Servo.h>
+
+// Instâncias dos servos
+Servo base;
+Servo ombro;
+Servo cotovelo;
+Servo garra;
+
+void setup() {
+  base.attach(9);     // Servo 1 na porta 9
+  ombro.attach(10);   // Servo 2 na porta 10
+  cotovelo.attach(11);// Servo 3 na porta 11
+  garra.attach(6);    // Servo 4 na porta 6
+}
+
+void loop() {
+  // Leitura analógica dos potenciômetros
+  int pot1 = analogRead(A0);
+  int pot2 = analogRead(A1);
+  int pot3 = analogRead(A2);
+  int pot4 = analogRead(A3);
+
+  // Mapeamento dos valores (Entrada Min, Entrada Max, Saída Min, Saída Max)
+  int anguloBase     = map(pot1, 0, 1023, 0, 180);
+  int anguloOmbro    = map(pot2, 0, 1023, 0, 180);
+  int anguloCotovelo = map(pot3, 0, 1023, 0, 180);
+  int anguloGarra    = map(pot4, 0, 1023, 0, 180); // Ajuste os limites da garra se necessário
+
+  // Escrita dos ângulos nos motores
+  base.write(anguloBase);
+  ombro.write(anguloOmbro);
+  cotovelo.write(anguloCotovelo);
+  garra.write(anguloGarra);
+
+  delay(15); // Pequena pausa para estabilidade dos motores
+}
