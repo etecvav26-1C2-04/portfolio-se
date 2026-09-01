@@ -1,36 +1,57 @@
 #include <Servo.h>
 
-// Instâncias dos servos
-Servo base;
-Servo ombro;
-Servo cotovelo;
-Servo garra;
+// Criando os 4 servos
+Servo serv1;
+Servo serv2;
+Servo serv3;
+Servo serv4;
+
+// Entradas dos potenciômetros
+int pot1 = A3;
+int pot2 = A2;
+int pot3 = A1;
+int pot4 = A0;
+
+// Variáveis para guardar os valores dos potenciômetros
+int valor1;
+int valor2;
+int valor3;
+int valor4;
+
+// Variáveis para guardar os movimentos dos servos
+int mov1;
+int mov2;
+int mov3;
+int mov4;
 
 void setup() {
-  base.attach(9);     // Servo 1 na porta 9
-  ombro.attach(10);   // Servo 2 na porta 10
-  cotovelo.attach(11);// Servo 3 na porta 11
-  garra.attach(6);    // Servo 4 na porta 6
+
+  // Definindo os pinos dos servos
+  serv1.attach(2);
+  serv2.attach(3);
+  serv3.attach(4);
+  serv4.attach(5);
 }
 
 void loop() {
-  // Leitura analógica dos potenciômetros
-  int pot1 = analogRead(A0);
-  int pot2 = analogRead(A1);
-  int pot3 = analogRead(A2);
-  int pot4 = analogRead(A3);
 
-  // Mapeamento dos valores (Entrada Min, Entrada Max, Saída Min, Saída Max)
-  int anguloBase     = map(pot1, 0, 1023, 0, 180);
-  int anguloOmbro    = map(pot2, 0, 1023, 0, 180);
-  int anguloCotovelo = map(pot3, 0, 1023, 0, 180);
-  int anguloGarra    = map(pot4, 0, 1023, 0, 180); // Ajuste os limites da garra se necessário
+  // Lendo os potenciômetros
+  valor1 = analogRead(pot1);
+  valor2 = analogRead(pot2);
+  valor3 = analogRead(pot3);
+  valor4 = analogRead(pot4);
 
-  // Escrita dos ângulos nos motores
-  base.write(anguloBase);
-  ombro.write(anguloOmbro);
-  cotovelo.write(anguloCotovelo);
-  garra.write(anguloGarra);
+  // Transformando 0-1023 em 0-180 graus
+  mov1 = map(valor1, 0, 1023, 0, 180);
+  mov2 = map(valor2, 0, 1023, 0, 180);
+  mov3 = map(valor3, 0, 1023, 0, 180);
+  mov4 = map(valor4, 0, 1023, 0, 180);
 
-  delay(15); // Pequena pausa para estabilidade dos motores
+  // Mandando os movimentos para os servos
+  serv1.write(mov1);
+  serv2.write(mov2);
+  serv3.write(mov3);
+  serv4.write(mov4);
+
+  delay(15);
 }
