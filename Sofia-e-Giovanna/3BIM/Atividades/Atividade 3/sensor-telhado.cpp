@@ -2,21 +2,21 @@
 
 Servo servoTelhado;
 
-const int ldr = A0;
-const int sensorTemperatura = A3;
+int ldr = A0;
+int sensorTemperatura = A3;
 
-const int LedVermelho = 4;
-const int LedVerde = 5;
+int LedVermelho = 4;
+int LedVerde = 5;
 
-const int LUZ = 6;          
-const int pinoServo = 8;
+int LUZ = 6;          
+int pinoServo = 8;
 
-const int TelhadoFec = 0;
-const int TelhadoAberto = 90;
+int TelhadoFec = 0;
+int TelhadoAberto = 90;
 
 
-const int limiteLuminosidade = 750;
-const float limiteTemperatura = 28.0;
+int limiteLuminosidade = 750;
+float limiteTemperatura = 28.0;
 
 
 void setup()
@@ -88,5 +88,4 @@ void loop()
 
   delay(500);
 }
-
 
